@@ -23,6 +23,7 @@ class UnauthorizedError(Exception):
         self.message = message
         super().__init__(self.message)
 
+
 class SheriAPIWrapper:
     api_key = os.getenv("API_KEY")
     user_agent = os.getenv("USER_AGENT")
