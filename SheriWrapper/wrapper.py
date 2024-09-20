@@ -29,7 +29,7 @@ class UnauthorizedError(Exception):
         super().__init__(self.message)
 
 
-class SheriWrapper:
+class Sheri_Wrapper:
     """
     The class for the Wrapper itself
     """
@@ -55,7 +55,7 @@ class SheriWrapper:
         url = f"{SheriWrapper.api_url}/{endpoint}"
 
         async with aiohttp.ClientSession() as session:
-            async with session.get(url, headers=SheriWrapper.headers) as response:
+            async with session.get(url, headers=Sheri_Wrapper.headers) as response:
                 if response.status == 401:
                     raise UnauthorizedError()
 
