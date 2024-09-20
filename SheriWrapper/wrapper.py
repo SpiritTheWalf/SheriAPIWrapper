@@ -9,7 +9,7 @@ import aiohttp
 from dotenv import load_dotenv
 load_dotenv()
 
-with importlib.resources.open_text("SheriWrapper", "endpoints.json") as file:
+with importlib.resources.open_text("sheri-wrapper", "endpoints.json") as file:
     data = json.load(file)
 
 sfw_endpoints = data['SFW_ENDPOINTS']
@@ -32,7 +32,7 @@ class UnauthorizedError(Exception):
         super().__init__(self.message)
 
 
-class Sheri_Wrapper:
+class SheriWrapper:
     """
     The class for the Wrapper itself
     """
@@ -58,7 +58,7 @@ class Sheri_Wrapper:
         url = f"{SheriWrapper.api_url}/{endpoint}"
 
         async with aiohttp.ClientSession() as session:
-            async with session.get(url, headers=Sheri_Wrapper.headers) as response:
+            async with session.get(url, headers=SheriWrapper.headers) as response:
                 if response.status == 401:
                     raise UnauthorizedError()
 
