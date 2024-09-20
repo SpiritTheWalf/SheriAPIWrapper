@@ -6,7 +6,7 @@ import aiohttp
 from dotenv import load_dotenv
 load_dotenv()
 
-with importlib.resources.open_text("SheriAPIWrapper", "endpoints.json") as file:
+with importlib.resources.open_text("SheriWrapper", "endpoints.json") as file:
     data = json.load(file)
 
 sfw_endpoints = data['SFW_ENDPOINTS']
