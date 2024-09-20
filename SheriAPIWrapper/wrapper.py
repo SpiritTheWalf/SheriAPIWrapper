@@ -17,6 +17,7 @@ class InvalidEndpointError(Exception):
     print("That is not a valid endpoint!")
     pass
 
+
 class UnauthorizedError(Exception):
     def __init__(self, message="Unauthorized, please make sure your API key is correct"):
         self.message = message
@@ -30,6 +31,7 @@ class SheriAPIWrapper:
         "Authorization": f"Token {api_key}",
         "User-Agent": user_agent
     }
+    
     def __init__(self):
         pass
 
@@ -50,5 +52,3 @@ class SheriAPIWrapper:
                     return result
                 else:
                     raise Exception(response.status)
-
-
