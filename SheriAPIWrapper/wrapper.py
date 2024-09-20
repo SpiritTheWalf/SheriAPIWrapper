@@ -53,6 +53,6 @@ class SheriAPIWrapper:
 
                 if response.status == 200:
                     result = await response.json()
-                        return result
+                    return result
                 else:
                     raise Exception(response.status)
