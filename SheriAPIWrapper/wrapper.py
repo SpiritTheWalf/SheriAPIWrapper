@@ -32,7 +32,7 @@ class SheriAPIWrapper:
         "Authorization": f"Token {api_key}",
         "User-Agent": user_agent
     }
-    
+
     def __init__(self):
         pass
 
