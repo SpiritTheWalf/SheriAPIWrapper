@@ -1,7 +1,8 @@
-import aiohttp
 import importlib.resources
 import os
 import json
+import aiohttp
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -13,6 +14,7 @@ nsfw_endpoints = data['NSFW_ENDPOINTS']
 
 
 class InvalidEndpointError(Exception):
+    print("That is not a valid endpoint!")
     pass
 
 class UnauthorizedError(Exception):
