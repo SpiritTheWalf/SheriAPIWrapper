@@ -21,9 +21,9 @@ class InvalidEndpointError(Exception):
 
 
 class UnauthorizedError(Exception):
-"""
-Error that is called if you do not have a valid API key
-"""
+    """
+    Error that is called if you do not have a valid API key
+    """
     def __init__(self, message="Unauthorized, please make sure your API key is correct"):
         self.message = message
         super().__init__(self.message)
