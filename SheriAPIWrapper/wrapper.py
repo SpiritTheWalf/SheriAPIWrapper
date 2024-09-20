@@ -14,12 +14,16 @@ nsfw_endpoints = data['NSFW_ENDPOINTS']
 
 
 class InvalidEndpointError(Exception):
-    # Error if the endpoint passed is not valid
+    """
+    Error that is called if an invalid endpoint is passed
+    """
     print("That is not a valid endpoint!")
 
 
 class UnauthorizedError(Exception):
-    # Error if yon't have a valid API key
+   """
+   Error that is called if you do not have a valid API key
+   """
     def __init__(self, message="Unauthorized, please make sure your API key is correct"):
         self.message = message
         super().__init__(self.message)
@@ -39,15 +43,17 @@ class SheriWrapper:
         pass
 
     @staticmethod
-    # Method to request an image from the API
+    """
+    Method that takes one parameter, endpoint, and returns a parsed dict of responses
+    """
     async def lookup(endpoint):
         if endpoint not in sfw_endpoints and endpoint not in nsfw_endpoints:
             raise InvalidEndpointError("That endpoint is not in the list")
 
-        url = f"{SheriAPIWrapper.api_url}/{endpoint}"
+        url = f"{SheriWrapper.api_url}/{endpoint}"
 
         async with aiohttp.ClientSession() as session:
-            async with session.get(url, headers=SheriAPIWrapper.headers) as response:
+            async with session.get(url, headers=SheriWrapper.headers) as response:
                 if response.status == 401:
                     raise UnauthorizedError()
 
