@@ -14,17 +14,19 @@ nsfw_endpoints = data['NSFW_ENDPOINTS']
 
 
 class InvalidEndpointError(Exception):
+    # Error if the endpoint passed is not valid
     print("That is not a valid endpoint!")
-    pass
 
 
 class UnauthorizedError(Exception):
+    # Error if yon't have a valid API key
     def __init__(self, message="Unauthorized, please make sure your API key is correct"):
         self.message = message
         super().__init__(self.message)
 
 
 class SheriAPIWrapper:
+    # The Wrapper class
     api_key = os.getenv("API_KEY")
     user_agent = os.getenv("USER_AGENT")
     api_url = "https://sheri.bot/api"
@@ -37,6 +39,7 @@ class SheriAPIWrapper:
         pass
 
     @staticmethod
+    # Method to request an image from the API
     async def lookup(endpoint):
         if endpoint not in sfw_endpoints and endpoint not in nsfw_endpoints:
             raise InvalidEndpointError("That endpoint is not in the list")
@@ -50,6 +53,6 @@ class SheriAPIWrapper:
 
                 if response.status == 200:
                     result = await response.json()
-                    return result
+                        return result
                 else:
                     raise Exception(response.status)
