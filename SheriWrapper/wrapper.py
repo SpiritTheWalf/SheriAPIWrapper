@@ -30,7 +30,9 @@ class UnauthorizedError(Exception):
 
 
 class SheriWrapper:
-    # The Wrapper class
+    """
+    The class for the Wrapper itself
+    """
     api_key = os.getenv("API_KEY")
     user_agent = os.getenv("USER_AGENT")
     api_url = "https://sheri.bot/api"
@@ -43,10 +45,10 @@ class SheriWrapper:
         pass
 
     @staticmethod
-    """
-    Method that takes one parameter, endpoint, and returns a parsed dict of responses
-    """
     async def lookup(endpoint):
+        """
+         Method that takes one parameter, endpoint, and returns a parsed dict of responses
+        """
         if endpoint not in sfw_endpoints and endpoint not in nsfw_endpoints:
             raise InvalidEndpointError("That endpoint is not in the list")
 
