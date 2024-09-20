@@ -1,3 +1,6 @@
+"""
+Sheri API Wrapper 
+"""
 import importlib.resources
 import os
 import json
@@ -62,5 +65,4 @@ class Sheri_Wrapper:
                 if response.status == 200:
                     result = await response.json()
                     return result
-                else:
-                    raise Exception(response.status)
+                raise Exception(response.status)
